@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+        }
+
+        nav {
+            height: 80px;
+            border: 1px solid gray;
+            display: flex;
+            align-items: center;
+
+            background: white;
+            width: 100%;
+
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            column-gap: 1rem;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        .container {
+            display: flex;
+            padding-top: 2rem;
+            column-gap: 2rem;
+            justify-content: center;
+        }
+
+        .sidebar{
+            height: 100vh;
+            position: sticky;
+            top: 90px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>Stack Overflow</li>
+                <li>About</li>
+                <li>Products</li>
+                <li>OverflowAI</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <ul>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                    <li>Home</li>
+                    <li>Questions</li>
+                    <li>Tags</li>
+                    <li>Users</li>
+                    <li>Companies</li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h2>Foreign Key Django Model</h2>
+
+                <pre>Asked 12 years ago
+                Modified 2 years, 9 months ago
+                Viewed 216k times
+                68
+
+                I'm trying to create 3 models ; Person, Address and Anniversy. The plan is to have one address and one
+                anniversy for each person. But each address and anniversy can have multiple persons.
+
+                So far I have the following, but I think the OneToMany(foreign key) relationships maybe the wrong way
+                round. i.e each address can have one person but each person can have multiple addresses.
+
+                from django.db import models
+
+                class Person(models.Model):
+                name = models.CharField(max_length=50)
+                birthday = models.DateField()
+
+                def __unicode__(self):
+                return u'%s' % (self.name)
+
+                class Address(models.Model):
+                person = models.ForeignKey(Person)
+                address = models.CharField(max_length=150)
+
+                def __unicode__(self):
+                return u'%s' % (self.address)
+
+                class Anniversy(models.Model):
+                person = models.ForeignKey(Person)
+                anniversy = models.DateField()
+
+                def __unicode__(self):
+                return u'%s' % (self.anniversy)
+                pythondjangodjango-models
+                Share
+                Improve this question
+                Follow
+                edited Aug 20, 2017 at 21:25
+                Martijn Pieters's user avatar
+                Martijn Pieters
+                1.1m321321 gold badges4.2k4.2k silver badges3.4k3.4k bronze badges
+                asked Feb 2, 2013 at 15:43
+                felix001's user avatar
+                felix001
+                16.7k3838 gold badges103103 silver badges133133 bronze badges
+                Add a comment
+                2 Answers
+                Sorted by:
+
+                Highest score (default)
+                128
+
+                You create the relationships the other way around; add foreign keys to the Person type to create a
+                Many-to-One relationship:
+
+                class Person(models.Model):
+                name = models.CharField(max_length=50)
+                birthday = models.DateField()
+                anniversary = models.ForeignKey(
+                "Anniversary", on_delete=models.CASCADE)
+                address = models.ForeignKey(
+                "Address", on_delete=models.CASCADE)
+
+                class Address(models.Model):
+                line1 = models.CharField(max_length=150)
+                line2 = models.CharField(max_length=150)
+                postalcode = models.CharField(max_length=10)
+                city = models.CharField(max_length=150)
+                country = models.CharField(max_length=150)
+
+                class Anniversary(models.Model):
+                date = models.DateField()
+                I used string names for the other models so they can still be defined after, or you can define the
+                Person model last.
+
+                Any one person can only be connected to one address and one anniversary, but addresses and anniversaries
+                can be referenced from multiple Person entries.
+
+                Anniversary and Address objects will be given a reverse, backwards relationship too; by default it'll be
+                called person_set but you can configure a different name if you need to. See Following relationships
+                "backward" in the queries documentation.</pre>
+
+            </div>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>
