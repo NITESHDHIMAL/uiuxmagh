@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* pseudo selector  */
+
+
+
+        .box{
+            height: 300px;
+            width: 300px;
+            background-color: lightcoral;
+            border-radius: 50%; 
+
+            /* transition: all 2s; */
+
+            /* transition-property: height; */
+            transition-property: all;
+            transition-duration: 2s;
+            transition-timing-function:cubic-bezier(1,-0.78, 0, 1.44);
+
+
+        }
+
+        .box:hover{
+            background-color: aqua;
+            /* cursor: pointer; */
+            /* cursor:help; */
+            /* cursor:crosshair; */
+            width: 150px;
+            height: 150px;
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    
+
+    <div class="box"></div>
+
+</body>
+</html>
