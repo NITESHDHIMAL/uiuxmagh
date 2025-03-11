@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 150px;
+            width: 150px;
+            background-color: lightcoral;
+            /* transition: all 2s; */
+
+            /* transition-property: all;
+            transition-duration: 2s; */
+            /* transition-delay: 2s; */
+
+            /* animation: ; */
+
+           
+
+            animation-name: moveBox;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;
+            /* animation-timing-function: ease-in; */
+            animation-timing-function: linear;
+            
+
+        }
+
+        /* .box:hover{
+            background-color: aqua;
+            margin-top: 200px; 
+        } */
+
+        /* @keyframes moveBox {
+            for {
+                top: 0;
+                left: 0;
+            }
+
+            to {
+                left: 200px;
+                top: 0px;
+            }
+        } */
+
+        @keyframes moveBox {
+            0% {
+                left: 0px;
+                top: 0;
+                position: relative;
+            }
+            25% {
+                left: 200px;
+                top: 0;
+                position: relative;
+            }
+            50% {
+                left: 200px;
+                top: 200px;
+                position: relative;
+            }
+            75% {
+                left: 0px;
+                top: 200px;
+                position: relative;
+            }
+            100% {
+                left: 0px;
+                top: 0;
+                position: relative;
+            } 
+        }
+
+
+
+         
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+
+</body>
+
+</html>

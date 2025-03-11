@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: aqua;
+            height: 300px;
+            width: 300px;
+        }
+        .minibox{
+            background-color: lightcoral;
+            height: 300px;
+            width: 300px;
+            transition: all 1s ;
+        }
+        .minibox:hover{
+            cursor: pointer;
+            /* transform:rotate(30deg); */
+            /* transform:rotateX(60deg); */
+            /* transform:rotateY(60deg); */
+
+            /* transform: scale(2); */
+            /* transform: scaleX(2); */
+            /* transform: scaleY(2); */
+
+            /* transform: skew(20deg); */
+            /* transform: skewX(20deg); */
+            /* transform: skewY(20deg); */
+
+            transform: translate(150px, 150px);
+            /* transform: translateX(150px); */
+            /* transform: translateY(150px); */
+
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="box">
+        <div class="minibox">
+            rotate is working
+        </div>
+    </div>
+
+    
+</body>
+</html>
